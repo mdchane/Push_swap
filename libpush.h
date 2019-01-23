@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/15 14:48:19 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/23 09:39:16 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 typedef struct		s_stack
 {
 	int				nbr;
-	struct s_pile	*next;
+	struct s_stack	*next;
 }					t_stack;
