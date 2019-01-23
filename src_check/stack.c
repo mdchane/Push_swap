@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libpush.h                                          :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/23 13:45:41 by mdchane          ###   ########.fr       */
+/*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
+/*   Updated: 2019/01/23 13:41:29 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libpush.h"
 
-typedef struct		s_stack
+t_stack	*stk_add_begin(t_stack *stk, int nbr)
 {
-	int				nbr;
-	struct s_stack	*next;
-}					t_stack;
+	t_stack		*new;
 
-
-t_stack				*stk_add_begin(t_stack *stk, int nbr);
-
-int					is_zero(char *str);
+	if (!(new = (t_stack *)malloc(sizeof(*new))))
+			return (NULL);
+	new->nbr = nbr;
+	new->next = stk;
+	return (new);
+}
