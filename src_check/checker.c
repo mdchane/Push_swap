@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/24 16:36:45 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/24 16:50:09 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_stack(t_stack **stk, int argc, char **argv)
 			*stk = stk_add_begin(*stk, 0);
 		else
 		{
-			printf("Error\n");
 		 	exit(1);
 		}
 	}
@@ -53,7 +52,7 @@ void	read_commands(t_env e)
 	bf = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
-		if (ft_strcmp(line, 4) == 0)
+		if (ft_strcmp(line[0], '^D') == 0)
 			break ;
 		bf = lst_add_end(bf, line);
 	}
