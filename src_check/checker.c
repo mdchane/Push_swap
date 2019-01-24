@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/24 12:01:07 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/24 16:36:45 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,17 @@ void	init_stack(t_stack **stk, int argc, char **argv)
 
 void	read_commands(t_env e)
 {
-	int		i;
+	t_list	*bf;
+	char	*line;
 
-	i = 0;
-	e.buff = (char **)malloc(sizeof(char *) * 5);
-	while (get_next_line(0, &e.buff[i]) > 0)
+	bf = NULL;
+	while (get_next_line(0, &line) > 0)
 	{
-		//printf("%s\n", e.buff[i]);
-		//if (ft_strcmp(e.buff, ""))
-		i++;
-		if (i > 5)
-			break;
+		if (ft_strcmp(line, 4) == 0)
+			break ;
+		bf = lst_add_end(bf, line);
 	}
-	print_buff(e.buff);
+	print_buff(bf);
 }
 
 int		main(int argc, char **argv)

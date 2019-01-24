@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/24 11:12:36 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/24 16:32:26 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,26 @@ t_stack	*stk_add_begin(t_stack *stk, int nbr)
 	return (new);
 }
 
+t_list	*lst_add_end(t_list *lst, char *str)
+{
+	t_list	*new;
+	t_list	*tmp;
+
+	new = ft_lstnew(str, ft_strlen(str));
+	if (lst == NULL)
+	{
+		lst = new;
+		return (lst);
+	}
+	tmp = lst;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next = new;
+	return (lst);
+}
+
 void	print_stack(t_stack *stk)
 {
 	int		i;
@@ -36,14 +56,15 @@ void	print_stack(t_stack *stk)
 	}
 }
 
-void	print_buff(char **buff)
+void	print_buff(t_list *buff)
 {
 	int		i;
 
 	i = 0;
-	while (buff[i])
+	while (buff)
 	{
-		ft_putendl(buff[i]);
+		printf("i = %d et buff =%s\n", i, buff->content);
+		buff = buff->next;
 		i++;
 	}
 }
