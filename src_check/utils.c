@@ -6,11 +6,16 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:59:44 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 15:07:34 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 16:48:21 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
+
+int		stk_is_sorted(t_stack *a, t_stack *b)
+{
+	if (b)
+}
 
 void	print_stack(t_stack *a, t_stack *b)
 {
