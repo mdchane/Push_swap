@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 11:26:49 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 14:41:12 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ t_stack				*stk_add_begin(t_stack *stk, int nbr);
 void				stk_doublon(t_stack *stk, int nbr);
 int					is_zero(char *str);
 
+void				read_commands(t_env *e);
 t_list				*lst_add_end(t_list *lst, char *str);
 void				is_command(char *str);
+
+void				stk_swap(t_stack *a, t_stack *b, char c);
+void				run_checker(t_env *e);
 
 void				print_stack(t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);

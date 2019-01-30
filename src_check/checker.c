@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 11:26:51 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 14:42:19 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,16 @@ void	init_stack(t_stack **stk, int argc, char **argv)
 	}
 }
 
-void	read_commands(t_env e)
+void	read_commands(t_env *e)
 {
 	char	*line;
 
-	e.buff = NULL;
+	e->buff = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		is_command(line);
-		e.buff = lst_add_end(e.buff, line);
+		e->buff = lst_add_end(e->buff, line);
 	}
-	print_buff(e.buff);
 }
 
 int		main(int argc, char **argv)
@@ -56,8 +55,9 @@ int		main(int argc, char **argv)
 
 	i = 0;
 	init_stack(&e.stk_a, argc, argv);
-	read_commands(e);
+	read_commands(&e);
 	print_buff(e.buff);
-	print_stack(e.stk_a, e.stk_b);
+	run_checker(&e);
+	//print_stack(e.stk_a, e.stk_b);
 	return (0);
 }

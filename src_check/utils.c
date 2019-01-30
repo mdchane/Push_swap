@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:59:44 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 11:23:43 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 15:07:34 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_stack(t_stack *a, t_stack *b)
 		printf("%d ", b->nbr);
 		b = b->next;
 	}
-	printf("\n");
+	printf("\n\n");
 }
 
 void	print_buff(t_list *buff)
