@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 15:20:36 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 16:41:00 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,37 @@ void	stk_rotate(t_stack **a, t_stack **b, char c)
 	}
 }
 
+void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
+{
+	int		tmp;
+	t_stack	*begin;
+
+	if ((c == 'a' || c == 'r') && (*a && (*a)->next))
+	{
+		begin = *a;
+		while((*a)->next->next)
+		{
+			(*a) = (*a)->next;
+		}
+		tmp = (*a)->next->nbr;
+		(*a)->next = NULL;
+		(*a) = begin;
+		*a = stk_add_begin(*a, tmp);
+	}
+	if ((c == 'b' || c == 'r') && (*b && (*b)->next))
+	{
+		begin = *b;
+		while((*b)->next->next)
+		{
+			(*b) = (*b)->next;
+		}
+		tmp = (*b)->next->nbr;
+		(*b)->next = NULL;
+		(*b) = begin;
+		*b = stk_add_begin(*b, tmp);
+	}
+}
+
 void	run_checker(t_env *e)
 {
 	print_stack(e->stk_a, e->stk_b);
@@ -92,7 +123,8 @@ void	run_checker(t_env *e)
 			stk_push(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[1]);
 		if (((char *)e->buff->content)[0] == 'r' && e->buff->content_size == 2)
 			stk_rotate(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[1]);
-
+		else
+			stk_rev_rotate(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[2]);
 		e->buff = e->buff->next;
 		print_stack(e->stk_a, e->stk_b);
 	}
