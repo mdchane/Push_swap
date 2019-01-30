@@ -6,11 +6,11 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/24 16:32:26 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 11:26:43 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libpush.h"
+#include "libpush.h"
 
 t_stack	*stk_add_begin(t_stack *stk, int nbr)
 {
@@ -21,6 +21,19 @@ t_stack	*stk_add_begin(t_stack *stk, int nbr)
 	new->nbr = nbr;
 	new->next = stk;
 	return (new);
+}
+
+void	stk_doublon(t_stack *stk, int nbr)
+{
+	if (!stk)
+		return ;
+	while (stk)
+	{
+		if (stk->nbr == nbr)
+			error();
+		stk= stk->next;
+	}
+	return ;
 }
 
 t_list	*lst_add_end(t_list *lst, char *str)
@@ -43,28 +56,14 @@ t_list	*lst_add_end(t_list *lst, char *str)
 	return (lst);
 }
 
-void	print_stack(t_stack *stk)
+void	is_command(char *str)
 {
-	int		i;
-
-	i = 0;
-	while (stk)
-	{
-		printf("%d = %d\n", i, stk->nbr);
-		i++;
-		stk = stk->next;
-	}
-}
-
-void	print_buff(t_list *buff)
-{
-	int		i;
-
-	i = 0;
-	while (buff)
-	{
-		printf("i = %d et buff =%s\n", i, buff->content);
-		buff = buff->next;
-		i++;
-	}
+	if (ft_strcmp(str, "sa") && ft_strcmp(str, "sb") &&
+		ft_strcmp(str, "ss") && ft_strcmp(str, "pa") &&
+		ft_strcmp(str, "pb") && ft_strcmp(str, "ra") &&
+		ft_strcmp(str, "rb") && ft_strcmp(str, "rr") &&
+		ft_strcmp(str, "rra") && ft_strcmp(str, "rrb") &&
+		ft_strcmp(str, "rrr"))
+		error();
+	return ;
 }

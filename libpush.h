@@ -6,13 +6,22 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/24 16:31:32 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/30 11:26:49 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBPUSH_H
 # define LIBPUSH_H
-# include "get_next_line.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include "libft/libft.h"
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <limits.h>
+
+# define BUFF_SIZE 32
 
 typedef struct		s_stack
 {
@@ -28,12 +37,18 @@ typedef struct		s_env
 }					t_env;
 
 
-
+void				error();
+int					get_next_line(const int fd, char **line);
 
 t_stack				*stk_add_begin(t_stack *stk, int nbr);
-t_list				*lst_add_end(t_list *lst, char *str);
-void				print_stack(t_stack *stk);
-void				print_buff(t_list *buff);
+void				stk_doublon(t_stack *stk, int nbr);
 int					is_zero(char *str);
+
+t_list				*lst_add_end(t_list *lst, char *str);
+void				is_command(char *str);
+
+void				print_stack(t_stack *a, t_stack *b);
+void				print_buff(t_list *buff);
+
 
 #endif
