@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/31 11:10:37 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/31 16:20:29 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ int		main(int argc, char **argv)
 	i = 0;
 	init_stack(&e.stk_a, argc, argv);
 	read_commands(&e);
-	print_buff(e.buff);
 	run_checker(&e);
-	print_buff(e.buff);
+	if (stk_is_sorted(e.stk_a, e.stk_b))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 	free_all(&e);
 	return (0);
 }

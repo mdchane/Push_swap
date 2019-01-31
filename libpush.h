@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/31 10:09:42 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/31 16:05:28 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,12 @@ void				lst_add_end(t_list **lst, char *str);
 void				is_command(char *str);
 
 void				stk_swap(t_stack *a, t_stack *b, char c);
+void				stk_push(t_stack **a, t_stack **b, char c);
+void				stk_rotate(t_stack **a, t_stack **b, char c);
+void				stk_rev_rotate(t_stack **a, t_stack **b, char c);
 void				run_checker(t_env *e);
+
+int					stk_is_sorted(t_stack *a, t_stack *b);
 
 void				print_stack(t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);

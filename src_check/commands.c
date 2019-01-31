@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/31 15:17:46 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/31 15:57:01 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,6 @@ void	stk_rotate(t_stack **a, t_stack **b, char c)
 		(*b) = begin;
 	}
 }
-
-// void	stk_r(t_stack **stk, int nbr_prec)
-// {
-// 	if (!stk)
-// 		return ;
-// 	if ((*stk)->next != NULL)
-// 		stk_r(&(*stk)->next, (*stk)->nbr);
-// 	(*stk)->nbr = nbr_prec;
-// }
 
 void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 {
