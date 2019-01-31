@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/30 16:46:38 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/01/31 15:17:46 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,39 +81,49 @@ void	stk_rotate(t_stack **a, t_stack **b, char c)
 	}
 }
 
+// void	stk_r(t_stack **stk, int nbr_prec)
+// {
+// 	if (!stk)
+// 		return ;
+// 	if ((*stk)->next != NULL)
+// 		stk_r(&(*stk)->next, (*stk)->nbr);
+// 	(*stk)->nbr = nbr_prec;
+// }
+
 void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 {
-	int		tmp;
+	t_stack	*tmp;
 	t_stack	*begin;
 
 	if ((c == 'a' || c == 'r') && (*a && (*a)->next))
 	{
 		begin = *a;
 		while((*a)->next->next)
-		{
 			(*a) = (*a)->next;
-		}
-		tmp = (*a)->next->nbr;
+		tmp = (*a)->next;
 		(*a)->next = NULL;
 		(*a) = begin;
-		*a = stk_add_begin(*a, tmp);
+		stk_add_begin(a, tmp->nbr);
+		free(tmp);
 	}
 	if ((c == 'b' || c == 'r') && (*b && (*b)->next))
 	{
 		begin = *b;
 		while((*b)->next->next)
-		{
 			(*b) = (*b)->next;
-		}
-		tmp = (*b)->next->nbr;
+		tmp = (*b)->next;
 		(*b)->next = NULL;
 		(*b) = begin;
-		*b = stk_add_begin(*b, tmp);
+		stk_add_begin(b, tmp->nbr);
+		free(tmp);
 	}
 }
 
 void	run_checker(t_env *e)
 {
+	t_list	*beg;
+
+	beg = e->buff;
 	print_stack(e->stk_a, e->stk_b);
 	while (e->buff)
 	{
@@ -128,4 +138,5 @@ void	run_checker(t_env *e)
 		e->buff = e->buff->next;
 		print_stack(e->stk_a, e->stk_b);
 	}
+	e->buff = beg;
 }

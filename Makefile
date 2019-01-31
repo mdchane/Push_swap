@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/30 11:27:24 by mdchane          ###   ########.fr        #
+#    Updated: 2019/01/31 13:53:38 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,13 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
-all: $(NAME) $(NAME2)
+all: libft $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft/
 	$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+
+libft:
+	make -C libft/
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	mkdir -p $(OBJ_PATH) 2> /dev/null || true
@@ -55,8 +57,6 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
 	mkdir -p $(OBJ_PATH2) 2> /dev/null || true
 	$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
-
-
 
 clean:
 	make -C libft/ clean
@@ -68,3 +68,5 @@ fclean: clean
 	rm -f $(NAME) $(NAME2)
 
 re: fclean all
+
+.PHONY: all libft clean fclean re

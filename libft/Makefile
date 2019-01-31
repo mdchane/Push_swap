@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/07 10:03:12 by mdchane          ###   ########.fr        #
+#    Updated: 2019/01/31 10:44:31 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,16 +84,15 @@ SRCS = ft_atoi.c\
 
 OBJS = $(SRCS:.c=.o)
 
-HEADERS = .
-
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(FLAGS) -c $(SRCS) -I $(HEADERS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+
+%.o:%.c
+	gcc $(FLAGS) -I . -o $@ -c $<
 
 clean:
 	/bin/rm -f $(OBJS)
