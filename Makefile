@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/31 13:53:38 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/04 14:26:00 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,13 +18,11 @@ CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
 
-SRC_PATH = src_check
+SRC_PATH = src
 
-SRC_PATH2 = src_push
+SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c
 
-SRC_NAME = checker.c get_next_line.c stack.c utils.c commands.c
-
-SRC_NAME2 =
+SRC_NAME2 = push_swap.c stack.c utils.c
 
 OBJ_PATH = obj
 
@@ -42,9 +40,12 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
-all: libft $(NAME)
+all: libft $(NAME) $(NAME2)
 
 $(NAME): $(OBJ)
+	$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+
+$(NAME2): $(OBJ2)
 	$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
 
 libft:
@@ -69,4 +70,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all libft clean fclean re
+.PHONY: all libft clean fclean re obj_dir

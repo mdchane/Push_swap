@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/31 16:05:28 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/04 14:06:25 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ typedef struct		s_env
 }					t_env;
 
 
-void				error();
-int					get_next_line(const int fd, char **line);
+void				error(t_env *e);
 
+void				init_stack(t_env *e, int argc, char **argv);
 void				stk_add_begin(t_stack **stk, int nbr);
-void				stk_doublon(t_stack *stk, int nbr);
+void				stk_doublon(t_env *e, t_stack *stk, int nbr);
 int					is_zero(char *str);
 
 void				read_commands(t_env *e);
 void				lst_add_end(t_list **lst, char *str);
-void				is_command(char *str);
+void				is_command(t_env *e, char *str);
 
 void				stk_swap(t_stack *a, t_stack *b, char c);
 void				stk_push(t_stack **a, t_stack **b, char c);
@@ -58,6 +58,7 @@ int					stk_is_sorted(t_stack *a, t_stack *b);
 
 void				print_stack(t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);
+void				stk_del(t_stack **stk);
 void				free_all(t_env *e);
 
 #endif

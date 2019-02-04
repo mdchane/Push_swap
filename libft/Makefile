@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2019/01/31 10:44:31 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/04 14:08:16 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,25 +80,34 @@ SRCS = ft_atoi.c\
 	   ft_putnchar.c\
 	   ft_putstr_to_n.c\
 	   ft_strupper.c\
-	   ft_ftoa.c
+	   ft_ftoa.c\
+	   get_next_line.c
 
-OBJS = $(SRCS:.c=.o)
+OBJ_NAME = $(SRCS:.c=.o)
+
+OBJ_PATH = obj
+
+OBJS = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(NAME): $(OBJ_PATH) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
-%.o:%.c
-	gcc $(FLAGS) -I . -o $@ -c $<
+$(OBJ_PATH):
+	@mkdir -p $(OBJ_PATH)
+
+$(OBJ_PATH)/%.o: %.c
+	@gcc $(FLAGS) -I . -o $@ -c $<
 
 clean:
-	/bin/rm -f $(OBJS)
+	@/bin/rm -rf $(OBJ_PATH)
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@/bin/rm -f $(NAME)
 
 re: fclean all
 
+.PHONY: all clean fclean re
