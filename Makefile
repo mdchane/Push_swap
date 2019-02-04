@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/04 14:26:00 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/04 14:38:30 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,34 +40,42 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
-all: libft $(NAME) $(NAME2)
+all: libft obj_dir $(NAME) $(NAME2)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@echo $(NAME) ": Sources compiling..."
+	@$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@echo "Executable "$(NAME)" made"
 
 $(NAME2): $(OBJ2)
-	$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@echo $(NAME) ": Sources compiling..."
+	@$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@echo "Executable "$(NAME2)" made"
 
 libft:
-	make -C libft/
+	@make -C libft/
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	mkdir -p $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
+	@$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
 
 $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
-	mkdir -p $(OBJ_PATH2) 2> /dev/null || true
-	$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
+	@$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
+
+obj_dir:
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH2)
 
 clean:
-	make -C libft/ clean
-	rm -f $(OBJ) $(OBJ2)
+	@make -C libft/ fclean
 	@rm -rf $(OBJ_PATH) || true
 	@rm -rf $(OBJ_PATH2) || true
+	@echo $(OBJ_PATH)", "$(OBJ_PATH2)" deleted"
 
 fclean: clean
-	rm -f $(NAME) $(NAME2)
+	@rm -f $(NAME) $(NAME2)
+	@echo "Executable "$(NAME)", "$(NAME2)" deleted"
 
 re: fclean all
+	@echo "Make re done"
 
 .PHONY: all libft clean fclean re obj_dir
