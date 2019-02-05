@@ -6,7 +6,7 @@
 /*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/05 14:14:36 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/05 16:14:07 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,16 @@ void	print_buff(t_list *buff)
 		i++;
 	}
 	buff = tmp;
+}
+
+void print_tab(int *tab, int taille)
+{
+    int i = 0;
+
+    while(i < taille)
+    {
+        printf("%d ", tab[i]);
+        i++;
+    }
+    printf("\n");
 }

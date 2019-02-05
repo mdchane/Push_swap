@@ -5,70 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/05 14:35:41 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/05 15:20:42 by dchane           ###   ########.fr       */
+/*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
+/*   Updated: 2019/02/05 17:47:51 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-int		stk_len(t_stack *stk)
+void    sort_two(t_stack *stk)
 {
-    int     len;
-
-	len = 0;
-	while (stk)
-	{
-		stk = stk->next;
-		len++;
-	}
-	return (len);
+    if (stk->nbr > stk->next->nbr)
+        ft_putstr("ra\n");
 }
 
-int		*stk_to_tab(t_stack *stk)
+void    sort_three(t_stack *stk)
 {
-	int		tab[stk_len(stk)];
-	int		i;
+    int     *tab;
 
-	i = 0;
-	while(stk)
-	{
-		tab[i] = stk->nbr;
-		stk = stk->next;
-		i++;
-	}
+    tab = stk_to_tab(stk);
+    if (tab[0] < tab[1] && tab[1] > tab[2] && tab[0] < tab[2])
+        ft_putstr("rra\nsa\n");
+    else if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] < tab[2])
+        ft_putstr("sa\n");
+    else if (tab[0] < tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
+        ft_putstr("rra\n");
+    else if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] > tab[2])
+        ft_putstr("ra\n");
+    else if (tab[0] > tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
+        ft_putstr("ra\nsa\n");
 }
 
-void print_tab(int *tab, int taille)
+void    sort(t_env *e)
 {
-    int i = 0;
-
-    while(i < taille)
-    {
-        printf("%d ", tab[i]);
-        i++;
-    }
-    printf("\n");
-}
-
-void tri_rapide (int *tableau, int taille) {
-    int mur, courant, pivot, tmp;
-    print_tab(tableau, taille);
-    if (taille < 2) return;
-    // On prend comme pivot l element le plus a droite
-    pivot = tableau[taille - 1];
-    mur  = courant = 0;
-    while (courant < taille) {
-        if (tableau[courant] <= pivot) {
-            if (mur != courant) {
-                tmp=tableau[courant];
-                tableau[courant]=tableau[mur];
-                tableau[mur]=tmp;              
-            }
-            mur ++;
-        }
-        courant ++;
-    }
-    tri_rapide(tableau, mur - 1);
-    tri_rapide(tableau + mur - 1, taille - mur + 1);
+    if (stk_len(e->stk_a) == 2)
+        sort_two(e->stk_a);
+    else if (stk_len(e->stk_a) == 3)
+        sort_three(e->stk_a);
 }

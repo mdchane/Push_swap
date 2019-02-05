@@ -6,22 +6,13 @@
 /*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/05 15:22:29 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/05 17:08:25 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBPUSH_H
 # define LIBPUSH_H
-# include <stdlib.h>
-# include <unistd.h>
 # include "libft/libft.h"
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <stdio.h>
-# include <limits.h>
-
-# define BUFF_SIZE 32
 
 typedef struct		s_stack
 {
@@ -65,5 +56,10 @@ int					stk_len(t_stack *stk);
 int					*stk_to_tab(t_stack *stk);
 void				 tri_rapide (int *tableau, int taille);
 void 				print_tab(int *tab, int taille);
+int					stk_mediane(t_stack *stk);
+
+void   				sort_two(t_stack *stk);
+void			    sort_three(t_stack *stk);
+void  			  	sort(t_env *e);
 
 #endif
