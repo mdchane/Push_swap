@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
+#    By: dchane <dchane@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/04 14:38:30 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/05 15:21:02 by dchane           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_PATH = src
 
 SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c
 
-SRC_NAME2 = push_swap.c stack.c utils.c
+SRC_NAME2 = push_swap.c stack.c utils.c sort.c
 
 OBJ_PATH = obj
 

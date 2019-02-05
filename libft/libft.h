@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/04 14:06:27 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/05 14:13:18 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <limits.h>
+# include <stddef.h>
+# include <stdint.h>
+
 
 # define BUFF_SIZE 32
+# define OPEN_MAX 1200
 
 typedef struct		s_list
 {

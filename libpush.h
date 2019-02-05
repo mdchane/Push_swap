@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libpush.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/04 14:06:25 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/05 15:22:29 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,10 @@ void				print_stack(t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);
 void				stk_del(t_stack **stk);
 void				free_all(t_env *e);
+
+int					stk_len(t_stack *stk);
+int					*stk_to_tab(t_stack *stk);
+void				 tri_rapide (int *tableau, int taille);
+void 				print_tab(int *tab, int taille);
 
 #endif

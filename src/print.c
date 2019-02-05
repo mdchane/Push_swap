@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/31 16:26:03 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/05 14:14:36 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	print_stack(t_stack *a, t_stack *b)
 {
-	int		i;
-
-	i = 0;
 	printf("a : ");
 	while (a)
 	{
@@ -41,7 +38,7 @@ void	print_buff(t_list *buff)
 	i = 0;
 	while (buff)
 	{
-		printf("i = %d et buff =%s\n", i, buff->content);
+		printf("i = %d et buff =%s\n", i, (char *)buff->content);
 		buff = buff->next;
 		i++;
 	}
