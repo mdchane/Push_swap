@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:35:41 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/06 16:27:33 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/06 17:07:53 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	tri_rapide(int *tableau, int taille)
 	int tmp;
 
 	if (taille < 2)
-		return;
+		return ;
 	pivot = tableau[taille - 1];
 	mur = 0;
 	courant = 0;
