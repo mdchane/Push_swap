@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/05 16:14:07 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/06 12:35:54 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	print_buff(t_list *buff)
 	i = 0;
 	while (buff)
 	{
-		printf("i = %d et buff =%s\n", i, (char *)buff->content);
+		ft_putstr(buff->content);
 		buff = buff->next;
 		i++;
 	}
@@ -47,12 +47,12 @@ void	print_buff(t_list *buff)
 
 void print_tab(int *tab, int taille)
 {
-    int i = 0;
+	int i = 0;
 
-    while(i < taille)
-    {
-        printf("%d ", tab[i]);
-        i++;
-    }
-    printf("\n");
+	while(i < taille)
+	{
+		printf("%d ", tab[i]);
+		i++;
+	}
+	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:22:13 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/04 14:23:28 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/06 13:51:11 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	read_commands(t_env *e)
 {
 	char	*line;
 
-	e->buff = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
 		is_command(e, line);

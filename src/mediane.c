@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   mediane.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:35:41 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/05 16:37:36 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/06 15:13:32 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		stk_len(t_stack *stk)
 {
-    int     len;
+	int		len;
 
 	len = 0;
 	while (stk)
@@ -41,35 +41,46 @@ int		*stk_to_tab(t_stack *stk)
 	return (tab);
 }
 
-void tri_rapide (int *tableau, int taille) 
+void	tri_rapide(int *tableau, int taille)
 {
-    int mur;
+	int mur;
 	int	courant;
 	int	pivot;
 	int tmp;
 
-    if (taille < 2)
+	if (taille < 2)
 		return;
-    pivot = tableau[taille - 1];
-    mur = 0;
+	pivot = tableau[taille - 1];
+	mur = 0;
 	courant = 0;
-    while (courant < taille) 
+	while (courant < taille)
 	{
-        if (tableau[courant] <= pivot) 
+		if (tableau[courant] <= pivot)
 		{
-            if (mur != courant) 
+			if (mur != courant)
 			{
-                tmp = tableau[courant];
-                tableau[courant] = tableau[mur];
-                tableau[mur] = tmp;              
-            }
-            mur++;
-        }
-        courant++;
-    }
-    tri_rapide(tableau, mur - 1);
-    tri_rapide(tableau + mur - 1, taille - mur + 1);
+				tmp = tableau[courant];
+				tableau[courant] = tableau[mur];
+				tableau[mur] = tmp;
+			}
+			mur++;
+		}
+		courant++;
+	}
+	print_tab(tableau, taille);
+	tri_rapide(tableau, mur - 1);
+	tri_rapide(tableau + mur - 1, taille - mur + 1);
 }
+
+// void	quickort(int *tab, int left, int right)
+// {
+// 	int	pivot;
+// 	int
+// 	if (left >= right)
+// 		return ;
+
+// }
+
 
 int		stk_mediane(t_stack *stk)
 {

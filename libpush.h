@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libpush.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/05 17:08:25 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/06 12:36:37 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void				 tri_rapide (int *tableau, int taille);
 void 				print_tab(int *tab, int taille);
 int					stk_mediane(t_stack *stk);
 
-void   				sort_two(t_stack *stk);
-void			    sort_three(t_stack *stk);
+void   				sort_two(t_env *e);
+void			    sort_three(t_env *e);
 void  			  	sort(t_env *e);
 
 #endif

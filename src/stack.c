@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/04 14:25:15 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/06 13:52:17 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	init_stack(t_env *e, int argc, char **argv)
 		else
 			error(e);
 	}
+	e->buff = NULL;
 }
 
 void	stk_add_begin(t_stack **stk, int nbr)
