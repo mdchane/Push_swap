@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:35:41 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/06 15:13:32 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/06 16:27:33 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,6 @@ void	tri_rapide(int *tableau, int taille)
 	tri_rapide(tableau, mur - 1);
 	tri_rapide(tableau + mur - 1, taille - mur + 1);
 }
-
-// void	quickort(int *tab, int left, int right)
-// {
-// 	int	pivot;
-// 	int
-// 	if (left >= right)
-// 		return ;
-
-// }
-
 
 int		stk_mediane(t_stack *stk)
 {
