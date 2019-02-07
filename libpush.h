@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/06 12:36:37 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/07 15:12:22 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,18 @@ void				free_all(t_env *e);
 
 int					stk_len(t_stack *stk);
 int					*stk_to_tab(t_stack *stk);
-void				 tri_rapide (int *tableau, int taille);
-void 				print_tab(int *tab, int taille);
+void				tri_rapide (int *tableau, int taille);
+void				print_tab(int *tab, int taille);
 int					stk_mediane(t_stack *stk);
 
-void   				sort_two(t_env *e);
-void			    sort_three(t_env *e);
-void  			  	sort(t_env *e);
+int					stk_smallest(t_stack *stk);
+int					stk_smallest_pos(t_stack *stk);
+
+
+void				sort_two(t_env *e);
+void				sort_three(t_env *e);
+void				sort_med(t_env *e);
+void				sort(t_env *e);
+void				sort_min(t_env *e);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/06 12:58:04 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/07 15:15:39 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_PATH = src
 SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c
 
 SRC_NAME2 = push_swap.c stack.c utils.c mediane.c print.c sort.c \
-	read.c commands.c
+	read.c commands.c quicksort.c min_sort.c
 
 OBJ_PATH = obj
 
