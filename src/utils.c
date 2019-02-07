@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:59:44 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/07 15:00:46 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/07 16:19:42 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int		stk_smallest_pos(t_stack *stk)
 {
 	int		min;
 	int		posmin;
+	int		i;
 
+	i = 0;
 	posmin = 0;
 	if (stk)
 	{
@@ -43,9 +45,12 @@ int		stk_smallest_pos(t_stack *stk)
 		while (stk)
 		{
 			if (min > stk->nbr)
+			{
 				min = stk->nbr;
+				posmin = i;
+			}
 			stk = stk->next;
-			posmin++;
+			i++;
 		}
 		return (posmin);
 	}
