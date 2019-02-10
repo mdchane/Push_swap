@@ -3,60 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:59:44 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/07 16:19:42 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/10 14:14:49 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
-
-int		stk_smallest(t_stack *stk)
-{
-	int		min;
-
-	if (stk)
-	{
-		min = stk->nbr;
-		while (stk)
-		{
-			if (min > stk->nbr)
-				min = stk->nbr;
-			stk = stk->next;
-		}
-		return (min);
-	}
-	else
-		return (0);
-}
-
-int		stk_smallest_pos(t_stack *stk)
-{
-	int		min;
-	int		posmin;
-	int		i;
-
-	i = 0;
-	posmin = 0;
-	if (stk)
-	{
-		min = stk->nbr;
-		while (stk)
-		{
-			if (min > stk->nbr)
-			{
-				min = stk->nbr;
-				posmin = i;
-			}
-			stk = stk->next;
-			i++;
-		}
-		return (posmin);
-	}
-	else
-		return (0);
-}
 
 int		is_zero(char *str)
 {

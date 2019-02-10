@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/06 14:20:17 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/10 11:41:56 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ void	run_checker(t_env *e)
 	print_stack(e->stk_a, e->stk_b);
 	while (e->buff)
 	{
+		if (e->buff)
+			ft_putendl(e->buff->content);
 		if (((char *)e->buff->content)[0] == 's')
 			stk_swap(e->stk_a, e->stk_b, ((char *)e->buff->content)[1]);
 		if (((char *)e->buff->content)[0] == 'p')
@@ -127,8 +129,7 @@ void	run_checker(t_env *e)
 		else
 			stk_rev_rotate(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[2]);
 		e->buff = e->buff->next;
-		print_stack(e->stk_a, e->stk_b);
-		ft_putendl(e->buff->content);
+		print_stack(e->stk_a, e->stk_b);	
 	}
 	e->buff = beg;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   min_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/07 16:48:00 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/10 14:20:17 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 void	push_min(t_env *e)
 {
-	int		min;
 	int		pos;
 
-	min = stk_smallest(e->stk_a);
-	pos = stk_smallest_pos(e->stk_a);
+	pos = stk_posmin(e->stk_a);
 	if (pos == 0)
 	{
 		stk_push(&e->stk_a, &e->stk_b, 'b');

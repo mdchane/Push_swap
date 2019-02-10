@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/07 16:35:24 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/10 11:46:27 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,14 @@ void	sort_three(t_env *e)
 
 void	sort(t_env *e)
 {
-	// if (stk_len(e->stk_a) == 2)
-	// 	sort_two(e);
-	// else if (stk_len(e->stk_a) == 3)
-	// 	sort_three(e);
-	// else
-	// {
-	// 	sort_med(e);
-	// }
-	sort_min(e);
+	if (stk_len(e->stk_a) == 2)
+		sort_two(e);
+	else if (stk_len(e->stk_a) == 3)
+		sort_three(e);
+	else
+	{
+		sort_med(e);
+	}
 	print_buff(e->buff);
 	//print_stack(e->stk_a, e->stk_b);
 }
