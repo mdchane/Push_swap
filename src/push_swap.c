@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 09:52:57 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/05 17:09:08 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/11 12:45:14 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int		main(int argc, char **argv)
 	sort(e);
 
 	free_all(e);
+	return (0);
 }

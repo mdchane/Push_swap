@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/06 12:35:54 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/11 09:30:57 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	print_stack(t_stack *a, t_stack *b)
 void	print_buff(t_list *buff)
 {
 	int		i;
-	t_list	*tmp;
 
-	tmp = buff;
 	i = 0;
 	while (buff)
 	{
@@ -42,7 +40,6 @@ void	print_buff(t_list *buff)
 		buff = buff->next;
 		i++;
 	}
-	buff = tmp;
 }
 
 void print_tab(int *tab, int taille)
