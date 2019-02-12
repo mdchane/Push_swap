@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:28:43 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/11 15:21:37 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/12 10:48:27 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,39 @@ void	push_to_a(t_env *e)
 
 int		divntwo(int len, int n)
 {
+	float	l;
+
+	l = (float)len;
 	while (n > 0)
 	{
-		len = len / 2;
+		l = l / 2.0;
 		n--;
 	}
+	len = (int)l;
+	if (l / (len + 0.5) >= 1)
+		return (len + 1);
 	return (len);
 }
 
-void	mini_sort(t_env *e, int i)
+int		reversedivntwo(int len, int result)
 {
-	int		n;
+	int	i;
 
-	if (i == stk_len(e->stk_a) / 4 - 1)
+	i = 0;
+	while (divntwo(len, i) != result)
+	{
+		i++;
+	}
+	return (i);
+}
+
+void	mini_sort(t_env *e, int n)
+{
+	int		i;
+
+	if (n == 1)
 		return;
-	n = i * 2;
+	i = divntwo(stk_len(e->stk_a), n);
 	printf("div = %d\n", i);
 	while (i > 0)
 	{
@@ -109,6 +127,7 @@ void	mini_sort(t_env *e, int i)
 		}
 	}
 	print_stack(e->stk_a, e->stk_b);
+	n--;
 	mini_sort(e, n);
 }
 
@@ -130,11 +149,8 @@ void	sort_med(t_env *e)
 	printf("mini sort\n");
 	stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
 	lst_add_end(&e->buff, "rra\n");
-	stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
-	lst_add_end(&e->buff, "rra\n");
-	print_stack(e->stk_a, e->stk_b);
-	mini_sort(e, 3);
-	print_stack(e->stk_a, e->stk_b);
+	mini_sort(e, reversedivntwo(stk_len(e->stk_a), 2));
+	printf("len  = %d\n", stk_len(e->stk_a));
 }
 
 
