@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/11 12:45:17 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/12 14:23:38 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int		main(int argc, char **argv)
 {
 	t_env	*e;
 
+	if (argc < 2)
+		return (0);
 	if (!(e = (t_env *)ft_memalloc(sizeof(t_env))))
 		exit(1);
 	init_stack(e, argc, argv);

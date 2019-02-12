@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/12 11:36:48 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/12 14:02:44 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ int					stk_mediane(t_stack *stk);
 
 int					stk_min(t_stack *stk);
 int					stk_posmin(t_stack *stk);
-int  				stk_max(t_stack *stk);
+int					stk_max(t_stack *stk);
+int					stk_posmax(t_stack *stk);
 
 
 void				sort_two(t_env *e);

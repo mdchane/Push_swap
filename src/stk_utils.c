@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stk_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:14:28 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/10 14:17:14 by dchane           ###   ########.fr       */
+/*   Updated: 2019/02/12 14:02:10 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,33 @@ int		stk_posmin(t_stack *stk)
 			i++;
 		}
 		return (posmin);
+	}
+	else
+		return (0);
+}
+
+int		stk_posmax(t_stack *stk)
+{
+	int		max;
+	int		posmax;
+	int		i;
+
+	i = 0;
+	posmax = 0;
+	if (stk)
+	{
+		max = stk->nbr;
+		while (stk)
+		{
+			if (max < stk->nbr)
+			{
+				max = stk->nbr;
+				posmax = i;
+			}
+			stk = stk->next;
+			i++;
+		}
+		return (posmax);
 	}
 	else
 		return (0);
