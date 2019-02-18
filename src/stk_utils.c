@@ -6,15 +6,28 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:14:28 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/18 09:02:58 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 14:01:08 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-int     stk_max(t_stack *stk)
+int		stk_len(t_stack *stk)
 {
-    int		max;
+	int		len;
+
+	len = 0;
+	while (stk)
+	{
+		stk = stk->next;
+		len++;
+	}
+	return (len);
+}
+
+int	stk_max(t_stack *stk)
+{
+	int		max;
 
 	if (stk)
 	{
@@ -45,33 +58,6 @@ int		stk_min(t_stack *stk)
 			stk = stk->next;
 		}
 		return (min);
-	}
-	else
-		return (0);
-}
-
-int		stk_posmin(t_stack *stk)
-{
-	int		min;
-	int		posmin;
-	int		i;
-
-	i = 0;
-	posmin = 0;
-	if (stk)
-	{
-		min = stk->nbr;
-		while (stk)
-		{
-			if (min > stk->nbr)
-			{
-				min = stk->nbr;
-				posmin = i;
-			}
-			stk = stk->next;
-			i++;
-		}
-		return (posmin);
 	}
 	else
 		return (0);

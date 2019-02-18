@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 11:36:47 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 15:17:20 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,14 @@ int					stk_max(t_stack *stk);
 int					stk_posmax(t_stack *stk);
 
 int					*get_mins(t_stack *stk, int nb);
+int					*get_maxs(t_stack *stk, int	nb);
 int					in_tab(int *tab, int nb, int len);
 void				sort_two(t_env *e);
 void				sort_three(t_env *e);
 void				sort_less_five(t_env *e);
-void				sort(t_env *e);
+int					first_pos_maxmin(t_stack *stk, int *mins, int *maxs, int nb);
 void				sort_min(t_env *e);
+void				sort(t_env *e);
+void				optimize_buff(t_env *e);
 
 #endif
