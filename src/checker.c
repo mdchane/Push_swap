@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:16:41 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/12 14:23:38 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:28:49 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ int		main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	if (!(e = (t_env *)ft_memalloc(sizeof(t_env))))
-		exit(1);
-	init_stack(e, argc, argv);
+	init_e(&e, argc, argv);
 	read_commands(e);
 	run_checker(e);
-	if (stk_is_sorted(e->stk_a, e->stk_b))
+	if (stk_is_sorted(e->a, e->b))
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");

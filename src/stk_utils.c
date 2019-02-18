@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:14:28 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/12 14:02:10 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 09:02:58 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,14 @@ int		stk_posmax(t_stack *stk)
 	}
 	else
 		return (0);
+}
+
+void	stk_del(t_stack **stk)
+{
+	if (!stk || !(*stk))
+		return ;
+	if ((*stk)->next != NULL)
+		stk_del(&(*stk)->next);
+	if (stk)
+		ft_memdel((void **)stk);
 }

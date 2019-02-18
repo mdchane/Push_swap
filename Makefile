@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/11 14:16:12 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/18 09:03:19 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ FLAGS = -Wall -Werror -Wextra
 
 SRC_PATH = src
 
-SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c
+SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c \
+	stk_utils.c
 
 SRC_NAME2 = push_swap.c stack.c utils.c mediane.c print.c sort.c \
 	read.c commands.c quicksort.c min_sort.c stk_utils.c

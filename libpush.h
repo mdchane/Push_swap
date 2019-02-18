@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/12 14:02:44 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:36:47 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ typedef struct		s_stack
 
 typedef struct		s_env
 {
-	t_stack			*stk_a;
-	t_stack			*stk_b;
+	t_stack			*a;
+	t_stack			*b;
 	t_list			*buff;
 }					t_env;
 
 
 void				error(t_env *e);
 
-void				init_stack(t_env *e, int argc, char **argv);
+void				init_e(t_env **e, int argc, char **argv);
 void				stk_add_begin(t_stack **stk, int nbr);
 void				stk_doublon(t_env *e, t_stack *stk, int nbr);
 int					is_zero(char *str);
@@ -51,6 +51,7 @@ void				print_stack(t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);
 void				stk_del(t_stack **stk);
 void				free_all(t_env *e);
+int					tab_len(char **tab);
 
 int					stk_len(t_stack *stk);
 int					*stk_to_tab(t_stack *stk);
@@ -58,16 +59,18 @@ void				tri_rapide (int *tableau, int taille);
 void				print_tab(int *tab, int taille);
 void				quick_sort(int *tab, int left, int right);
 int					stk_mediane(t_stack *stk);
+void 				command_buff(t_env *e, char *command, char c);
 
 int					stk_min(t_stack *stk);
 int					stk_posmin(t_stack *stk);
 int					stk_max(t_stack *stk);
 int					stk_posmax(t_stack *stk);
 
-
+int					*get_mins(t_stack *stk, int nb);
+int					in_tab(int *tab, int nb, int len);
 void				sort_two(t_env *e);
 void				sort_three(t_env *e);
-void				sort_med(t_env *e);
+void				sort_less_five(t_env *e);
 void				sort(t_env *e);
 void				sort_min(t_env *e);
 

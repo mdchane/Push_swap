@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/12 14:20:05 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:42:59 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,59 @@
 
 void	sort_two(t_env *e)
 {
-	if (e->stk_a->nbr > e->stk_a->next->nbr)
-		lst_add_end(&e->buff, "ra\n");
+	if (e->a->nbr > e->a->next->nbr)
+		command_buff(e, "stk_swap", 'a');
 }
 
 void	sort_three(t_env *e)
 {
 	int		*tab;
 
-	tab = stk_to_tab(e->stk_a);
+	tab = stk_to_tab(e->a);
 	if (tab[0] < tab[1] && tab[1] > tab[2] && tab[0] < tab[2])
 	{
-		stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
-		stk_swap(e->stk_a, e->stk_b, 'a');
-		lst_add_end(&e->buff, "rra\n");
-		lst_add_end(&e->buff, "sa\n");
+		command_buff(e, "stk_rev_rotate", 'a');
+		command_buff(e, "stk_swap", 'a');
 	}
 	else if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] < tab[2])
-	{
-		stk_swap(e->stk_a, e->stk_b, 'a');
-		lst_add_end(&e->buff, "sa\n");
-	}
+		command_buff(e, "stk_swap", 'a');
 	else if (tab[0] < tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
-	{
-		stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
-		lst_add_end(&e->buff, "rra\n");
-	}
+		command_buff(e, "stk_rev_rotate", 'a');
 	else if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] > tab[2])
-	{
-		stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
-		lst_add_end(&e->buff, "ra\n");
-	}
+		command_buff(e, "stk_rotate", 'a');
 	else if (tab[0] > tab[1] && tab[1] > tab[2] && tab[0] > tab[2])
 	{
-		stk_rotate(&e->stk_a, &e->stk_b, 'a');
-		stk_swap(e->stk_a, e->stk_b, 'a');
-		lst_add_end(&e->buff, "ra\n");
-		lst_add_end(&e->buff, "sa\n");
+		command_buff(e, "stk_rotate", 'a');
+		command_buff(e, "stk_swap", 'a');
 	}
+}
+
+void	sort_less_five(t_env *e)
+{
+	int		*mins;
+
+	mins = get_mins(e->a, 2);
+	while (stk_len(e->a) > 3)
+	{
+		while (!in_tab(mins, e->a->nbr, 2))
+			command_buff(e, "stk_rotate", 'a');
+		command_buff(e, "stk_push", 'b');
+	}
+	if (stk_len(e->a) <= 3)
+		sort_three(e);
+	while (e->b)
+		command_buff(e, "stk_push", 'a');
+	sort_two(e);
 }
 
 void	sort(t_env *e)
 {
-	if (stk_len(e->stk_a) == 2)
-		sort_two(e);
-	else if (stk_len(e->stk_a) == 3)
-		sort_three(e);
+	if (stk_is_sorted(e->a, e->b))
+		return ;
+	if (stk_len(e->a) <= 5)
+		sort_less_five(e);
 	else
-	{
 		sort_min(e);
-	}
 	print_buff(e->buff);
-	// print_stack(e->stk_a, e->stk_b);
+	// print_stack(e->a, e->b);
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/12 14:19:34 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:28:44 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,14 @@ void	run_checker(t_env *e)
 	beg = e->buff;
 	while (e->buff)
 	{
-		if (e->buff)
-			ft_putendl(e->buff->content);
 		if (((char *)e->buff->content)[0] == 's')
-			stk_swap(e->stk_a, e->stk_b, ((char *)e->buff->content)[1]);
+			stk_swap(e->a, e->b, ((char *)e->buff->content)[1]);
 		if (((char *)e->buff->content)[0] == 'p')
-			stk_push(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[1]);
+			stk_push(&e->a, &e->b, ((char *)e->buff->content)[1]);
 		if (((char *)e->buff->content)[0] == 'r' && e->buff->content_size == 2)
-			stk_rotate(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[1]);
+			stk_rotate(&e->a, &e->b, ((char *)e->buff->content)[1]);
 		else
-			stk_rev_rotate(&e->stk_a, &e->stk_b, ((char *)e->buff->content)[2]);
+			stk_rev_rotate(&e->a, &e->b, ((char *)e->buff->content)[2]);
 		e->buff = e->buff->next;
 	}
 	e->buff = beg;

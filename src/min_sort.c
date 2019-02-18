@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/12 14:56:52 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:28:44 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,52 +87,38 @@ int		first_pos_maxmin(t_stack *stk, int *mins, int *maxs, int nb)
 
 void	push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
 {
-	mins = get_mins(e->stk_a, nb);
-	maxs = get_maxs(e->stk_a, nb);
-	while (e->stk_a)
+	mins = get_mins(e->a, nb);
+	maxs = get_maxs(e->a, nb);
+	while (e->a)
 	{
-		mins = get_mins(e->stk_a, nb);
-		maxs = get_maxs(e->stk_a, nb);
-		// if (first_pos_maxmin(e->stk_a, mins, maxs, nb) == 0)
-			while (!in_tab(maxs, e->stk_a->nbr, nb) && !in_tab(mins, e->stk_a->nbr, nb))
-			{
-				stk_rotate(&e->stk_a, &e->stk_b, 'a');
-				lst_add_end(&e->buff, "ra\n");
-			}
+		mins = get_mins(e->a, nb);
+		maxs = get_maxs(e->a, nb);
+		// if (first_pos_maxmin(e->a, mins, maxs, nb) == 0)
+		while (!in_tab(maxs, e->a->nbr, nb) && !in_tab(mins, e->a->nbr, nb))
+			command_buff(e, "stk_rotate", 'a');
 		// else
-		// 	while (!in_tab(maxs, e->stk_a->nbr, nb) && !in_tab(mins, e->stk_a->nbr, nb))
+		// 	while (!in_tab(maxs, e->a->nbr, nb) && !in_tab(mins, e->a->nbr, nb))
 		// 	{
-		// 		stk_rev_rotate(&e->stk_a, &e->stk_b, 'a');
+		// 		stk_rev_rotate(&e->a, &e->b, 'a');
 		// 		lst_add_end(&e->buff, "rra\n");
 		// 	}
-		stk_push(&e->stk_a, &e->stk_b, 'b');
-		lst_add_end(&e->buff, "pb\n");
-		if (in_tab(maxs, e->stk_b->nbr, nb))
-		{
-			stk_rotate(&e->stk_a, &e->stk_b, 'b');
-			lst_add_end(&e->buff, "rb\n");
-		}
+		command_buff(e, "stk_push", 'b');
+		if (in_tab(maxs, e->b->nbr, nb))
+			command_buff(e, "stk_rotate", 'b');
 	}
 }
 
 void	re_push(t_env *e)
 {
-	while (e->stk_b)
+	while (e->b)
 	{
-		if (stk_posmax(e->stk_b) < stk_len(e->stk_b) / 2)
-			while (e->stk_b->nbr != stk_max(e->stk_b))
-			{
-				stk_rotate(&e->stk_a, &e->stk_b, 'b');
-				lst_add_end(&e->buff, "rb\n");
-			}
+		if (stk_posmax(e->b) < stk_len(e->b) / 2)
+			while (e->b->nbr != stk_max(e->b))
+				command_buff(e, "stk_rotate", 'b');
 		else
-			while (e->stk_b->nbr != stk_max(e->stk_b))
-			{
-				stk_rev_rotate(&e->stk_a, &e->stk_b, 'b');
-				lst_add_end(&e->buff, "rrb\n");
-			}
-		stk_push(&e->stk_a, &e->stk_b, 'a');
-		lst_add_end(&e->buff, "pa\n");
+			while (e->b->nbr != stk_max(e->b))
+				command_buff(e, "stk_rev_rotate", 'b');
+		command_buff(e, "stk_push", 'a');
 	}
 }
 
@@ -144,7 +130,7 @@ void	sort_min(t_env *e)
 
 	mins = NULL;
 	maxs = NULL;
-	nb = stk_len(e->stk_a) / 40;
+	nb = stk_len(e->a) / 40;
 	nb = (nb == 0) ? 1 : nb;
 	push_maxs_mins(e, mins, maxs, nb);
 	re_push(e);

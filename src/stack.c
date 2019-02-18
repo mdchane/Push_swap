@@ -6,31 +6,46 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/06 13:52:17 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/18 11:28:22 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-void	init_stack(t_env *e, int argc, char **argv)
+void	init_stack(t_env *e, char **argv, int begin, int last)
 {
 	int		nbr;
-	t_stack **stk;
+	t_stack	**stk;
 
-	stk = &(e->stk_a);
+	stk = &(e->a);
 	*stk = NULL;
-	while (--argc > 0)
+	while (begin <= --last)
 	{
-		nbr = ft_atoi(argv[argc]);
+		nbr = ft_atoi(argv[last]);
 		stk_doublon(e, *stk, nbr);
 		if (nbr != 0 )
 			stk_add_begin(stk, nbr);
-		else if (is_zero(argv[argc]))
+		else if (is_zero(argv[last]))
 			stk_add_begin(stk, 0);
 		else
 			error(e);
 	}
-	e->buff = NULL;
+}
+
+void	init_e(t_env **e, int argc, char **argv)
+{
+	char	**tab;
+
+	if (!(*e = (t_env *)ft_memalloc(sizeof(t_env))))
+		exit(1);
+	if (argc == 2)
+	{
+		tab = ft_strsplit(argv[1], ' ');
+		init_stack(*e, tab, 0, tab_len(tab));
+	}
+	else
+		init_stack(*e, argv, 1, argc);
+	(*e)->buff = NULL;
 }
 
 void	stk_add_begin(t_stack **stk, int nbr)
@@ -73,14 +88,4 @@ int		stk_is_sorted(t_stack *a, t_stack *b)
 	}
 	else
 		return (0);
-}
-
-void	stk_del(t_stack **stk)
-{
-	if (!stk || !(*stk))
-		return ;
-	if ((*stk)->next != NULL)
-		stk_del(&(*stk)->next);
-	if (stk)
-		ft_memdel((void **)stk);
 }
