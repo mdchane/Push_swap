@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/18 14:29:11 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/19 17:48:47 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	sort(t_env *e)
 	else
 		sort_min(e);
 	optimize_buff(e);
-	print_buff(e->buff);
+	// print_buff(e->buff);
 	// print_stack(e->a, e->b);
 }

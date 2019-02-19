@@ -26,7 +26,7 @@
 # include <stdint.h>
 
 # define BUFF_SIZE 32
-
+# define OPEN_MAX 1200
 typedef struct		s_list
 {
 	void			*content;

@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   min_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dchane <dchane@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 15:40:30 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/19 18:01:04 by dchane           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
-
-
 
 int		in_tab(int *tab, int nb, int len)
 {
@@ -54,6 +52,21 @@ void	re_push(t_env *e)
 	}
 }
 
+int		best_nb(int len)
+{
+	int		i;
+	int		nb;
+
+	i = 10;
+	nb = 1;
+	while (i < len)
+	{
+		i = i * 2;
+		nb = nb + 1;
+	}
+	return (nb);
+}
+
 void	sort_min(t_env *e)
 {
 	int		*mins;
@@ -62,8 +75,9 @@ void	sort_min(t_env *e)
 
 	mins = NULL;
 	maxs = NULL;
-	nb = stk_len(e->a) / 16;
+	nb = best_nb(stk_len(e->a));
 	nb = (nb == 0) ? 1 : nb;
+	printf("nb = %d\n", nb);
 	push_maxs_mins(e, mins, maxs, nb);
-	re_push(e);
+	// re_push(e);
 }
