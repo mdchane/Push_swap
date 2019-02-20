@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 11:28:44 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/20 15:44:09 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 	}
 }
 
-void	run_checker(t_env *e)
+void	run_checker(t_env *e, int opt)
 {
 	t_list	*beg;
 
@@ -126,6 +126,10 @@ void	run_checker(t_env *e)
 		else
 			stk_rev_rotate(&e->a, &e->b, ((char *)e->buff->content)[2]);
 		e->buff = e->buff->next;
+		if (opt == 1)
+		{
+			print_stack(e);
+		}
 	}
 	e->buff = beg;
 }

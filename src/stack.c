@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 14:41:22 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/20 14:45:11 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,28 @@ void	init_stack(t_env *e, char **argv, int begin, int last)
 	}
 }
 
-void	init_e(t_env **e, int argc, char **argv)
+int		init_e(t_env **e, int argc, char **argv)
 {
 	char	**tab;
+	int		opt;
 
 	if (!(*e = (t_env *)ft_memalloc(sizeof(t_env))))
 		exit(1);
-	if (argc == 2)
+	opt = 0;
+	if (argc > 1)
 	{
-		tab = ft_strsplit(argv[1], ' ');
+		if (ft_strcmp(argv[1], "-v") == 0)
+			opt = 1;
+	}
+	if (argc == 2 + opt)
+	{
+		tab = ft_strsplit(argv[1 + opt], ' ');
 		init_stack(*e, tab, 0, tab_len(tab));
 	}
 	else
-		init_stack(*e, argv, 1, argc);
+		init_stack(*e, argv, 1 + opt, argc);
 	(*e)->buff = NULL;
+	return (opt);
 }
 
 void	stk_add_begin(t_stack **stk, int nbr)

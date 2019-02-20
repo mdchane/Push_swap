@@ -6,27 +6,65 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/11 09:30:57 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/20 15:44:45 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-void	print_stack(t_stack *a, t_stack *b)
+int	ft_len_num(int n)
 {
-	printf("a : ");
-	while (a)
+	int	len;
+
+	if (n == 0)
+		return (1);
+	len = 0;
+	if (n < 0)
 	{
-		printf("%d ", a->nbr);
-		a = a->next;
+		len++;
+		n = n * -1;
 	}
-	printf("\nb : ");
-	while (b)
+	while (n > 0)
 	{
-		printf("%d ", b->nbr);
-		b = b->next;
+		n = n / 10;
+		len++;
 	}
-	printf("\n\n");
+	return (len);
+}
+
+
+void	print_stack(t_env *e)
+{
+	int		i;
+	int		j;
+
+	ft_printf("%-110s", "PILE A:");
+	ft_printf("%-110s\n", "PILE B:");
+	while (e->a || e->b)
+	{
+		i = 0;
+		if (e->a)
+		{
+			ft_putnbr(e->a->nbr);
+			put_n_char(' ', 10 - ft_len_num(e->a->nbr));
+			i = 10;
+			i += put_n_char('-', e->a->nbr);
+			e->a = e->a->next;
+		}
+		if (e->b)
+		{
+			put_n_char(' ', 110 - i);
+			ft_putnbr(e->b->nbr);
+			put_n_char(' ', 10 - ft_len_num(e->b->nbr));
+			put_n_char('-', e->b->nbr);
+			e->b = e->b->next;
+		}
+		ft_putchar('\n');
+		j = 0;
+			while (j < 100000000)
+				j++;
+	}
+	put_n_char('\n', 10);
 }
 
 void	print_buff(t_list *buff)
