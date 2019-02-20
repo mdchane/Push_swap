@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 13:58:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 14:03:20 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/20 12:50:32 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,33 @@ int		first_pos_maxmin(t_stack *stk, int *mins, int *maxs, int nb)
 		return (0);
 	else
 		return (1);
+}
+
+int		stk_posmax2(t_stack *stk, int *maxs)
+{
+	int		posmax1;
+	int		posmax2;
+	int		len;
+	t_stack	*tmp;
+
+	len = stk_len(stk);
+	posmax1 = 0;
+	posmax2 = 0;
+	tmp = stk;
+	while (stk && stk->nbr != maxs[0])
+	{
+		posmax1++;
+		stk = stk->next;
+	}
+	// printf("stk_posmax : posmax1 = %d\n", posmax1);
+	while (tmp && tmp->nbr != maxs[1])
+	{
+		posmax2++;
+		tmp = tmp->next;
+	}
+	// printf("stk_posmax : posmax2 = %d\n", posmax2);
+	if (posmax1 < posmax2 || (len - posmax1) < (len - posmax2))
+		return (posmax1);
+	else
+		return (posmax2);
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 15:17:20 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/20 12:44:13 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int					stk_min(t_stack *stk);
 int					stk_posmin(t_stack *stk);
 int					stk_max(t_stack *stk);
 int					stk_posmax(t_stack *stk);
+int					stk_posmax2(t_stack *stk, int *maxs);
 
 int					*get_mins(t_stack *stk, int nb);
 int					*get_maxs(t_stack *stk, int	nb);

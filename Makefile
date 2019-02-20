@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/18 14:02:36 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/20 11:42:18 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c \
 	stk_utils.c
 
 SRC_NAME2 = push_swap.c stack.c utils.c command_buff.c print.c sort.c \
-	read.c commands.c quicksort.c min_sort.c stk_utils.c minmax.c
+	read.c commands.c quicksort.c min_sort.c minmax.c stk_utils.c
 
 OBJ_PATH = obj
 
@@ -72,7 +72,7 @@ debug_checker:$(OBJ)
 	@$(CC) -g $(FLAGS) $^ -o $@ -Llibft -lft
 	@echo "Executable "$@" made"
 
-debug_push:$(OBJ)
+debug_push:$(OBJ2)
 	@echo $@ ": Sources compiling..."
 	@$(CC) -g $(FLAGS) $^ -o $@ -Llibft -lft
 	@echo "Executable "$@" made"
