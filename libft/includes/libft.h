@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/10 12:45:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 09:38:25 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 09:17:40 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <limits.h>
 # include <stddef.h>
 # include <stdint.h>
+# include "libftprintf.h"
 
 # define BUFF_SIZE 32
 
@@ -112,5 +113,6 @@ int					ft_isupper(int c);
 int					ft_pow(int n, int exp);
 int					ft_sqrt(int nb);
 void				ft_foreach(int *tab, int length, void (*f)(int));
+int					ft_printf(const char *format, ...);
 
 #endif

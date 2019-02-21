@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/20 11:42:18 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/21 09:23:10 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,10 +58,10 @@ libft:
 	@make -C libft/
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
+	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
 
 $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
-	@$(CC) $(FLAGS) -I . -I libft/ -o $@ -c $<
+	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
 
 obj_dir:
 	@mkdir -p $(OBJ_PATH)

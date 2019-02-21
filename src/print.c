@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 15:44:45 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 09:27:21 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,13 @@ int	ft_len_num(int n)
 	return (len);
 }
 
-
 void	print_stack(t_env *e)
 {
 	int		i;
 	int		j;
 
-	ft_printf("%-110s", "PILE A:");
-	ft_printf("%-110s\n", "PILE B:");
+	// ft_printf("%-110s", "PILE A:");
+	// ft_printf("%-110s\n", "PILE B:");
 	while (e->a || e->b)
 	{
 		i = 0;
@@ -61,8 +60,8 @@ void	print_stack(t_env *e)
 		}
 		ft_putchar('\n');
 		j = 0;
-			while (j < 100000000)
-				j++;
+		while (j < 100000000)
+			j++;
 	}
 	put_n_char('\n', 10);
 }

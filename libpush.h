@@ -6,13 +6,13 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 15:43:50 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 09:20:39 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBPUSH_H
 # define LIBPUSH_H
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct		s_stack
 {
