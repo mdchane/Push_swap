@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/20 14:08:21 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:41:19 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,4 @@ void	sort(t_env *e)
 		sort_min(e);
 	optimize_buff(e);
 	print_buff(e->buff);
-	// print_stack(e->a, e->b);
 }

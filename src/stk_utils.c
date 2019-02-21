@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/10 14:14:28 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/20 11:17:00 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:41:34 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		stk_len(t_stack *stk)
 	return (len);
 }
 
-int	stk_max(t_stack *stk)
+int		stk_max(t_stack *stk)
 {
 	int		max;
 

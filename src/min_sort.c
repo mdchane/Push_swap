@@ -6,23 +6,13 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 14:26:44 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 15:04:23 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-int		in_tab(int *tab, int nb, int len)
-{
-	while (--len >= 0)
-	{
-		if (nb == tab[len])
-			return (1);
-	}
-	return (0);
-}
-
-void	push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
+void		push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
 {
 	mins = get_mins(e->a, nb);
 	maxs = get_maxs(e->a, nb);
@@ -38,7 +28,29 @@ void	push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
 	}
 }
 
-void	re_push(t_env *e)
+static void	re_smartpush(t_env *e, int *maxs, int i)
+{
+	if (i % 2 == 0)
+	{
+		if (stk_posmax2(e->b, maxs) < stk_len(e->b) / 2)
+			while (!in_tab(maxs, e->b->nbr, 2))
+				command_buff(e, "stk_rotate", 'b');
+		else
+			while (!in_tab(maxs, e->b->nbr, 2))
+				command_buff(e, "stk_rev_rotate", 'b');
+	}
+	else
+	{
+		if (stk_posmax(e->b) < stk_len(e->b) / 2)
+			while (e->b->nbr != stk_max(e->b))
+				command_buff(e, "stk_rotate", 'b');
+		else
+			while (e->b->nbr != stk_max(e->b))
+				command_buff(e, "stk_rev_rotate", 'b');
+	}
+}
+
+void		re_push(t_env *e)
 {
 	int		*maxs;
 	int		i;
@@ -47,24 +59,7 @@ void	re_push(t_env *e)
 	while (e->b)
 	{
 		maxs = get_maxs(e->b, 2);
-		if (i % 2 == 0)
-		{
-			if (stk_posmax2(e->b, maxs) < stk_len(e->b) / 2)
-				while (!in_tab(maxs, e->b->nbr, 2))
-					command_buff(e, "stk_rotate", 'b');
-			else
-				while (!in_tab(maxs, e->b->nbr, 2))
-					command_buff(e, "stk_rev_rotate", 'b');
-		}
-		else
-		{
-			if (stk_posmax(e->b) < stk_len(e->b) / 2)
-				while (e->b->nbr != stk_max(e->b))
-					command_buff(e, "stk_rotate", 'b');
-			else
-				while (e->b->nbr != stk_max(e->b))
-					command_buff(e, "stk_rev_rotate", 'b');
-		}
+		re_smartpush(e, maxs, i);
 		i++;
 		command_buff(e, "stk_push", 'a');
 		if (stk_len(e->a) > 1)
@@ -73,7 +68,7 @@ void	re_push(t_env *e)
 	}
 }
 
-int		best_nb(int len)
+int			best_nb(int len)
 {
 	int	nb;
 
@@ -88,7 +83,7 @@ int		best_nb(int len)
 	return (nb);
 }
 
-void	sort_min(t_env *e)
+void		sort_min(t_env *e)
 {
 	int		*mins;
 	int		*maxs;

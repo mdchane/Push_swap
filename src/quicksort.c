@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 16:28:43 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/18 13:52:41 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:39:31 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	quick_sort(int *tab, int left, int right)
 	pivot = tab[(left + right) / 2];
 	index = partition(tab, left, right, pivot);
 	quick_sort(tab, left, index - 1);
-	quick_sort(tab, index , right);
+	quick_sort(tab, index, right);
 }

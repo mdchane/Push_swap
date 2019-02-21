@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/21 09:20:07 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/21 12:51:41 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,13 +119,13 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(OBJ_PATH) $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
 
 $(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c $(HEADER)
-	gcc $(FLAGS) -I $(HEADER_PATH) -o $@ -c $<
+	@gcc $(FLAGS) -I $(HEADER_PATH) -o $@ -c $<
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)

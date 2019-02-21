@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 13:58:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 12:50:32 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:41:00 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		*stk_to_tab(t_stack *stk)
 
 	tab = (int *)malloc(sizeof(int) * stk_len(stk));
 	i = 0;
-	while(stk)
+	while (stk)
 	{
 		tab[i] = stk->nbr;
 		stk = stk->next;
@@ -28,8 +28,7 @@ int		*stk_to_tab(t_stack *stk)
 	return (tab);
 }
 
-
-int		*get_mins(t_stack *stk, int	nb)
+int		*get_mins(t_stack *stk, int nb)
 {
 	int		*mins;
 	int		*tab;
@@ -46,7 +45,7 @@ int		*get_mins(t_stack *stk, int	nb)
 	return (mins);
 }
 
-int		*get_maxs(t_stack *stk, int	nb)
+int		*get_maxs(t_stack *stk, int nb)
 {
 	int		*maxs;
 	int		*tab;
@@ -108,13 +107,11 @@ int		stk_posmax2(t_stack *stk, int *maxs)
 		posmax1++;
 		stk = stk->next;
 	}
-	// printf("stk_posmax : posmax1 = %d\n", posmax1);
 	while (tmp && tmp->nbr != maxs[1])
 	{
 		posmax2++;
 		tmp = tmp->next;
 	}
-	// printf("stk_posmax : posmax2 = %d\n", posmax2);
 	if (posmax1 < posmax2 || (len - posmax1) < (len - posmax2))
 		return (posmax1);
 	else

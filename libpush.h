@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 11:17:42 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 14:18:52 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ typedef struct		s_env
 	t_stack			*a;
 	t_stack			*b;
 	t_list			*buff;
+	int				opt[3];
 }					t_env;
 
 
 void				error(t_env *e);
 
-int					init_e(t_env **e, int argc, char **argv);
+void				init_e(t_env **e, int argc, char **argv);
 void				stk_add_begin(t_stack **stk, int nbr);
 void				stk_doublon(t_env *e, t_stack *stk, int nbr);
 int					is_zero(char *str);
@@ -43,11 +44,13 @@ void				stk_swap(t_stack *a, t_stack *b, char c);
 void				stk_push(t_stack **a, t_stack **b, char c);
 void				stk_rotate(t_stack **a, t_stack **b, char c);
 void				stk_rev_rotate(t_stack **a, t_stack **b, char c);
-void				run_checker(t_env *e, int opt);
+void				run_checker(t_env *e);
 
 int					stk_is_sorted(t_stack *a, t_stack *b);
 
-void				print_visu(int max, t_stack *a, t_stack *b, t_list *buff);
+int					lst_len(t_list *lst);
+void				print_visu_buff(t_list *buff, int opt);
+void				print_visu(int max, t_stack *a, t_stack *b);
 void				print_buff(t_list *buff);
 void				stk_del(t_stack **stk);
 void				free_all(t_env *e);

@@ -6,13 +6,13 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 11:43:19 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 15:04:06 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-void	stk_swap(t_stack *a, t_stack *b, char c)
+void		stk_swap(t_stack *a, t_stack *b, char c)
 {
 	int		tmp;
 
@@ -30,7 +30,7 @@ void	stk_swap(t_stack *a, t_stack *b, char c)
 	}
 }
 
-void	stk_push(t_stack **a, t_stack **b, char c)
+void		stk_push(t_stack **a, t_stack **b, char c)
 {
 	t_stack *tmp;
 
@@ -50,38 +50,31 @@ void	stk_push(t_stack **a, t_stack **b, char c)
 	}
 }
 
-void	stk_rotate(t_stack **a, t_stack **b, char c)
+static void	stk_rot(t_stack **stk)
 {
 	int		first;
 	t_stack	*begin;
 
-	if ((c == 'a' || c == 'r') && (*a && (*a)->next))
+	begin = (*stk);
+	first = (*stk)->nbr;
+	while ((*stk)->next)
 	{
-		begin = (*a);
-		first = (*a)->nbr;
-		while ((*a)->next)
-		{
-			(*a)->nbr = (*a)->next->nbr;
-			(*a) = (*a)->next;
-		}
-		(*a)->nbr = first;
-		(*a) = begin;
+		(*stk)->nbr = (*stk)->next->nbr;
+		(*stk) = (*stk)->next;
 	}
-	if ((c == 'b' || c == 'r') && (*b && (*b)->next))
-	{
-		begin = (*b);
-		first = (*b)->nbr;
-		while ((*b)->next)
-		{
-			(*b)->nbr = (*b)->next->nbr;
-			(*b) = (*b)->next;
-		}
-		(*b)->nbr = first;
-		(*b) = begin;
-	}
+	(*stk)->nbr = first;
+	(*stk) = begin;
 }
 
-void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
+void		stk_rotate(t_stack **a, t_stack **b, char c)
+{
+	if ((c == 'a' || c == 'r') && (*a && (*a)->next))
+		stk_rot(a);
+	if ((c == 'b' || c == 'r') && (*b && (*b)->next))
+		stk_rot(b);
+}
+
+void		stk_rev_rotate(t_stack **a, t_stack **b, char c)
 {
 	t_stack	*tmp;
 	t_stack	*begin;
@@ -89,7 +82,7 @@ void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 	if ((c == 'a' || c == 'r') && (*a && (*a)->next))
 	{
 		begin = *a;
-		while((*a)->next->next)
+		while ((*a)->next->next)
 			(*a) = (*a)->next;
 		tmp = (*a)->next;
 		(*a)->next = NULL;
@@ -100,7 +93,7 @@ void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 	if ((c == 'b' || c == 'r') && (*b && (*b)->next))
 	{
 		begin = *b;
-		while((*b)->next->next)
+		while ((*b)->next->next)
 			(*b) = (*b)->next;
 		tmp = (*b)->next;
 		(*b)->next = NULL;
@@ -108,31 +101,4 @@ void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 		stk_add_begin(b, tmp->nbr);
 		free(tmp);
 	}
-}
-
-void	run_checker(t_env *e, int opt)
-{
-	t_list	*beg;
-	int		max;
-
-	max = stk_max(e->a);
-	beg = e->buff;
-	while (e->buff)
-	{
-		if (((char *)e->buff->content)[0] == 's')
-			stk_swap(e->a, e->b, ((char *)e->buff->content)[1]);
-		if (((char *)e->buff->content)[0] == 'p')
-			stk_push(&e->a, &e->b, ((char *)e->buff->content)[1]);
-		if (((char *)e->buff->content)[0] == 'r' && e->buff->content_size == 2)
-			stk_rotate(&e->a, &e->b, ((char *)e->buff->content)[1]);
-		else
-			stk_rev_rotate(&e->a, &e->b, ((char *)e->buff->content)[2]);
-		if (opt == 1)
-		{
-			print_visu(max, e->a, e->b, e->buff);
-			// break ;
-		}
-		e->buff = e->buff->next;
-	}
-	e->buff = beg;
 }

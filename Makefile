@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/21 09:23:10 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/21 14:48:32 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ FLAGS = -Wall -Werror -Wextra
 
 SRC_PATH = src
 
-SRC_NAME = checker.c stack.c utils.c commands.c print.c read.c \
+SRC_NAME = init.c checker.c stack.c utils.c commands.c print.c read.c \
 	stk_utils.c
 
-SRC_NAME2 = push_swap.c stack.c utils.c command_buff.c print.c sort.c \
+SRC_NAME2 = init.c push_swap.c stack.c utils.c command_buff.c print.c sort.c \
 	read.c commands.c quicksort.c min_sort.c minmax.c stk_utils.c
 
 OBJ_PATH = obj
