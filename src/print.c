@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 16:25:36 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 09:27:21 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 11:51:14 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,38 +32,50 @@ int	ft_len_num(int n)
 	return (len);
 }
 
-void	print_stack(t_env *e)
+void	aff_piles(int max)
+{
+	ft_putstr("PILE A:");
+	put_n_char(' ', max + max / 10 + 3);
+	ft_putstr("PILE B:\n");
+}
+
+void	print_visu_buff(t_list *buff)
+{
+	if (buff->next)
+		ft_printf("Commande: %s\n", buff->content);
+	else
+		ft_printf("\033[31;1;4mLast action: %s\033[0m\n", buff->content);
+	usleep(180000);
+}
+
+void	print_visu(int max, t_stack *a, t_stack *b, t_list *buff)
 {
 	int		i;
-	int		j;
 
-	// ft_printf("%-110s", "PILE A:");
-	// ft_printf("%-110s\n", "PILE B:");
-	while (e->a || e->b)
+	ft_printf("\033[2J\033[H");
+	aff_piles(max);
+	while (a || b)
 	{
 		i = 0;
-		if (e->a)
+		if (a)
 		{
-			ft_putnbr(e->a->nbr);
-			put_n_char(' ', 10 - ft_len_num(e->a->nbr));
+			ft_putnbr(a->nbr);
+			put_n_char(' ', 10 - ft_len_num(a->nbr));
 			i = 10;
-			i += put_n_char('-', e->a->nbr);
-			e->a = e->a->next;
+			i += put_n_char('-', a->nbr);
+			a = a->next;
 		}
-		if (e->b)
+		if (b)
 		{
-			put_n_char(' ', 110 - i);
-			ft_putnbr(e->b->nbr);
-			put_n_char(' ', 10 - ft_len_num(e->b->nbr));
-			put_n_char('-', e->b->nbr);
-			e->b = e->b->next;
+			put_n_char(' ', max + max / 10 + 10 - i);
+			ft_putnbr(b->nbr);
+			put_n_char(' ', 10 - ft_len_num(b->nbr));
+			put_n_char('-', b->nbr);
+			b = b->next;
 		}
 		ft_putchar('\n');
-		j = 0;
-		while (j < 100000000)
-			j++;
 	}
-	put_n_char('\n', 10);
+	print_visu_buff(buff);
 }
 
 void	print_buff(t_list *buff)

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 09:20:39 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 11:17:42 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void				run_checker(t_env *e, int opt);
 
 int					stk_is_sorted(t_stack *a, t_stack *b);
 
-void				print_stack(t_env *e);
+void				print_visu(int max, t_stack *a, t_stack *b, t_list *buff);
 void				print_buff(t_list *buff);
 void				stk_del(t_stack **stk);
 void				free_all(t_env *e);

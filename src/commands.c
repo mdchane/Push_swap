@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 11:27:33 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 15:44:09 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/21 11:43:19 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,9 @@ void	stk_rev_rotate(t_stack **a, t_stack **b, char c)
 void	run_checker(t_env *e, int opt)
 {
 	t_list	*beg;
+	int		max;
 
+	max = stk_max(e->a);
 	beg = e->buff;
 	while (e->buff)
 	{
@@ -125,11 +127,12 @@ void	run_checker(t_env *e, int opt)
 			stk_rotate(&e->a, &e->b, ((char *)e->buff->content)[1]);
 		else
 			stk_rev_rotate(&e->a, &e->b, ((char *)e->buff->content)[2]);
-		e->buff = e->buff->next;
 		if (opt == 1)
 		{
-			print_stack(e);
+			print_visu(max, e->a, e->b, e->buff);
+			// break ;
 		}
+		e->buff = e->buff->next;
 	}
 	e->buff = beg;
 }
