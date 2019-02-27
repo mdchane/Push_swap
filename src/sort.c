@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 16:54:04 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/21 14:41:19 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/27 09:17:36 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	sort_three(t_env *e)
 		command_buff(e, "stk_rotate", 'a');
 		command_buff(e, "stk_swap", 'a');
 	}
+	ft_memdel((void **)&tab);
 }
 
 void	sort_less_five(t_env *e)
@@ -57,6 +58,7 @@ void	sort_less_five(t_env *e)
 	while (e->b)
 		command_buff(e, "stk_push", 'a');
 	sort_two(e);
+	ft_memdel((void **)&mins);
 }
 
 void	sort(t_env *e)

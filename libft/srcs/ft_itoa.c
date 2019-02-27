@@ -6,13 +6,13 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:21:17 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/20 15:17:20 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/25 13:45:05 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_len_num(long long n)
+int			ft_len_num(long long n)
 {
 	int	len;
 

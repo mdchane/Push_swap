@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 15:04:23 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/27 09:26:31 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void		push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
 {
-	mins = get_mins(e->a, nb);
-	maxs = get_maxs(e->a, nb);
 	while (e->a)
 	{
 		mins = get_mins(e->a, nb);
@@ -25,6 +23,8 @@ void		push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
 		command_buff(e, "stk_push", 'b');
 		if (in_tab(maxs, e->b->nbr, nb))
 			command_buff(e, "stk_rotate", 'b');
+		ft_memdel((void **)&mins);
+		ft_memdel((void **)&maxs);
 	}
 }
 
@@ -65,6 +65,7 @@ void		re_push(t_env *e)
 		if (stk_len(e->a) > 1)
 			if (e->a->nbr > e->a->next->nbr)
 				command_buff(e, "stk_swap", 'a');
+		ft_memdel((void **)&maxs);
 	}
 }
 
@@ -79,7 +80,7 @@ int			best_nb(int len)
 	else if (len < 300)
 		nb = 7 + len / 100;
 	else
-		nb = 9 + len / 100;
+		nb = 10 + len / 100;
 	return (nb);
 }
 

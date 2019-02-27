@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/21 14:48:32 by mdchane          ###   ########.fr        #
+#    Updated: 2019/02/25 17:25:35 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME2 = push_swap
 
 CC = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -g -Wall -Werror -Wextra
 
 SRC_PATH = src
 
@@ -67,16 +67,6 @@ obj_dir:
 	@mkdir -p $(OBJ_PATH)
 	@mkdir -p $(OBJ_PATH2)
 
-debug_checker:$(OBJ)
-	@echo $@ ": Sources compiling..."
-	@$(CC) -g $(FLAGS) $^ -o $@ -Llibft -lft
-	@echo "Executable "$@" made"
-
-debug_push:$(OBJ2)
-	@echo $@ ": Sources compiling..."
-	@$(CC) -g $(FLAGS) $^ -o $@ -Llibft -lft
-	@echo "Executable "$@" made"
-
 clean:
 	@make -C libft/ fclean
 	@rm -rf $(OBJ_PATH) || true
@@ -90,4 +80,4 @@ fclean: clean
 re: fclean all
 	@echo "Make re done"
 
-.PHONY: all libft clean fclean re obj_dir debug_checker debug_push
+.PHONY: all libft clean fclean re obj_dir

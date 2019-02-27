@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 13:58:07 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 14:41:00 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/27 09:28:03 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		*get_mins(t_stack *stk, int nb)
 	{
 		mins[nb] = tab[nb];
 	}
+	ft_memdel((void **)&tab);
 	return (mins);
 }
 
@@ -59,6 +60,7 @@ int		*get_maxs(t_stack *stk, int nb)
 	{
 		maxs[nb] = tab[len - nb - 1];
 	}
+	ft_memdel((void **)&tab);
 	return (maxs);
 }
 

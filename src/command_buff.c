@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/05 14:35:41 by dchane            #+#    #+#             */
-/*   Updated: 2019/02/18 14:32:52 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/27 09:47:33 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	optimize_buff(t_env *e)
 			ft_memcpy(e->buff->content, "rr\n", 3);
 			tmp = e->buff->next;
 			e->buff->next = e->buff->next->next;
-			free(tmp);
+			ft_lstdelone(&tmp);
 		}
 		e->buff = e->buff->next;
 	}
