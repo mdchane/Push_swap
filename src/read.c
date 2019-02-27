@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:22:13 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 14:49:52 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/02/27 13:39:54 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,38 @@ void	read_commands(t_env *e)
 		lst_add_end(&e->buff, line);
 		free(line);
 	}
+}
+
+int		is_option(char c)
+{
+	if (c == 'v' || c == 'c' || c == 'n')
+		return (1);
+	return (0);
+}
+
+int		init_opt(t_env **e, int argc, char **argv)
+{
+	int		i;
+
+	ft_bzero((*e)->opt, sizeof(int) * 3);
+	i = 1;
+	if (argc > 1)
+		if (argv[1][0] == '-' && is_option(argv[1][1]))
+		{
+			while (argv[1][i])
+			{
+				if (argv[1][i] == 'v')
+					(*e)->opt[0] = 1;
+				else if (argv[1][i] == 'c')
+					(*e)->opt[1] = 1;
+				else if (argv[1][i] == 'n')
+					(*e)->opt[2] = 1;
+				else
+					error(*e);
+				i++;
+			}
+		}
+	if ((*e)->opt[0] == 1 || (*e)->opt[1] == 1 || (*e)->opt[2] == 1)
+		return (1);
+	return (0);
 }
