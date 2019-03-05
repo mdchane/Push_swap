@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/25 17:25:35 by mdchane          ###   ########.fr        #
+#    Updated: 2019/03/05 09:47:50 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME2 = push_swap
 
 CC = gcc
 
-FLAGS = -g -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra
 
 SRC_PATH = src
 
@@ -42,16 +42,20 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
-all: libft obj_dir $(NAME) $(NAME2)
+all: obj_dir obj_dir2 libft $(NAME) $(NAME2)
+
+checker_solo: libft obj_dir $(NAME)
+
+push_swap_solo: libft obj_dir2 $(NAME2)
 
 $(NAME): $(OBJ)
 	@echo $(NAME) ": Sources compiling..."
-	@$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@$(CC) $(FLAGS) $(OBJ) -o $@ -Llibft -lft
 	@echo "Executable "$(NAME)" made"
 
-$(NAME2): $(OBJ2)
+$(NAME2):$(OBJ2)
 	@echo $(NAME2) ": Sources compiling..."
-	@$(CC) $(FLAGS) $^ -o $@ -Llibft -lft
+	@$(CC) $(FLAGS) $(OBJ2) -o $@ -Llibft -lft
 	@echo "Executable "$(NAME2)" made"
 
 libft:
@@ -65,6 +69,8 @@ $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
 
 obj_dir:
 	@mkdir -p $(OBJ_PATH)
+
+obj_dir2:
 	@mkdir -p $(OBJ_PATH2)
 
 clean:
