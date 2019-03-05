@@ -86,4 +86,4 @@ fclean: clean
 re: fclean all
 	@echo "Make re done"
 
-.PHONY: all libft clean fclean re obj_dir
+.PHONY: all libft clean fclean re obj_dir checker_solo push_swap_solo
