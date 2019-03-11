@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/04 14:22:13 by mdchane           #+#    #+#             */
-/*   Updated: 2019/03/04 14:37:01 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/11 16:10:48 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	lst_add_end(t_list **lst, char *str)
 
 void	is_command(t_env *e, char *str)
 {
-	if (ft_strcmp(str, "sa") && ft_strcmp(str, "sb") &&
-		ft_strcmp(str, "ss") && ft_strcmp(str, "pa") &&
-		ft_strcmp(str, "pb") && ft_strcmp(str, "ra") &&
-		ft_strcmp(str, "rb") && ft_strcmp(str, "rr") &&
-		ft_strcmp(str, "rra") && ft_strcmp(str, "rrb") &&
-		ft_strcmp(str, "rrr"))
+	if (ft_strcmp(str, "sa") && ft_strcmp(str, "sb")
+		&& ft_strcmp(str, "ss") && ft_strcmp(str, "pa")
+		&& ft_strcmp(str, "pb") && ft_strcmp(str, "ra")
+		&& ft_strcmp(str, "rb") && ft_strcmp(str, "rr")
+		&& ft_strcmp(str, "rra") && ft_strcmp(str, "rrb")
+		&& ft_strcmp(str, "rrr"))
 		error(e);
 	return ;
 }

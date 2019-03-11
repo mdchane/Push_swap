@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/03/11 08:24:36 by mdchane          ###   ########.fr        #
+#    Updated: 2019/03/11 16:14:09 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,24 +42,22 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
-all: obj_dir obj_dir2 libft $(NAME) $(NAME2)
+all: $(NAME) $(NAME2)
 
-checker_solo: libft obj_dir $(NAME)
-
-push_swap_solo: libft obj_dir2 $(NAME2)
-
-$(NAME): $(OBJ)
-	@echo $(NAME) ": Sources compiling..."
+$(NAME): $(OBJ_PATH) $(OBJ)
+	@make -j -C libft/
+	@$(info $(NAME) : Sources compiling...)
 	@$(CC) $(FLAGS) $(OBJ) -o $@ -Llibft -lft
-	@echo "Executable "$(NAME)" made"
+	@$(info Executable $(NAME) made)
 
-$(NAME2):$(OBJ2)
-	@echo $(NAME2) ": Sources compiling..."
+$(NAME2): $(OBJ_PATH2) $(OBJ2)
+	@make -j -C libft/
+	@$(info $(NAME2) : Sources compiling...)
 	@$(CC) $(FLAGS) $(OBJ2) -o $@ -Llibft -lft
-	@echo "Executable "$(NAME2)" made"
+	@$(info Executable $(NAME2) made)
 
-libft:
-	@make -C libft/
+lib:
+	@make -j -C libft/
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
@@ -67,11 +65,11 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
 	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
 
-obj_dir:
-	@mkdir -p $(OBJ_PATH)
+$(OBJ_PATH):
+	@mkdir -p $@
 
-obj_dir2:
-	@mkdir -p $(OBJ_PATH2)
+$(OBJ_PATH2):
+	@mkdir -p $@
 
 clean:
 	@make -C libft/ fclean
@@ -86,4 +84,4 @@ fclean: clean
 re: fclean all
 	@echo "Make re done"
 
-.PHONY: all libft clean fclean re obj_dir checker_solo push_swap_solo
+.PHONY: all lib clean fclean re
