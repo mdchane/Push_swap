@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 10:59:44 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 14:17:24 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/11 08:31:28 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,6 @@ int		lst_len(t_list *lst)
 	return (i);
 }
 
-int		is_zero(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] == '0')
-		i++;
-	if (i == ft_strlen(str))
-		return (1);
-	return (0);
-}
-
 void	error(t_env *e)
 {
 	ft_putendl("Error");
@@ -60,4 +48,24 @@ void	free_all(t_env *e)
 	stk_del(&e->a);
 	stk_del(&e->b);
 	free(e);
+}
+
+int		ft_len_num(int n)
+{
+	int	len;
+
+	if (n == 0)
+		return (1);
+	len = 0;
+	if (n < 0)
+	{
+		len++;
+		n = n * -1;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
 }

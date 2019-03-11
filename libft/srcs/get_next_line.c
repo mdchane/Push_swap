@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/15 10:32:40 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/04 14:05:17 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/04 16:53:54 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		get_next_line(const int fd, char **line)
 	char		*tmp;
 	int			error;
 
+	error = 0;
 	if (ft_errors(&str[fd], fd, line))
 		return (-1);
 	str[fd] = ft_read_it(&str[fd], fd, &error);
@@ -70,8 +71,7 @@ int		get_next_line(const int fd, char **line)
 		if (!(tmp = ft_strsub(str[fd], i + 1, ft_strlen(str[fd] + i + 1))))
 			return (-1);
 		ft_strdel(&str[fd]);
-		str[fd] = tmp;
-		return (1);
+		return ((str[fd] = tmp) || 1);
 	}
 	ft_strdel(&str[fd]);
 	return (0);

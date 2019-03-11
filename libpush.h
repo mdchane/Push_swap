@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 14:27:20 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/25 09:14:35 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/11 08:32:05 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct		s_env
 }					t_env;
 
 void				error(t_env *e);
+int					init_opt(t_env **e, int argc, char **argv);
 void				init_e(t_env **e, int argc, char **argv);
 void				stk_add_begin(t_stack **stk, int nbr);
 void				stk_doublon(t_env *e, t_stack *stk, int nbr);
 int					is_zero(char *str);
+int					ft_len_num(int n);
 
 void				read_commands(t_env *e);
 void				lst_add_end(t_list **lst, char *str);

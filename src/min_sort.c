@@ -6,16 +6,37 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 14:55:18 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/27 09:26:31 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/04 16:49:58 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
 
-void		push_maxs_mins(t_env *e, int *mins, int *maxs, int nb)
+int			best_nb(int len)
 {
+	int	nb;
+
+	if (len < 50)
+		nb = 1 + len / 10;
+	else if (len < 100)
+		nb = 2 + len / 10;
+	else if (len < 150)
+		nb = 8 + len / 100;
+	else if (len < 300)
+		nb = 12 + len / 100;
+	else
+		nb = 13 + len / 100;
+	nb = (nb == 0) ? 1 : nb;
+	return (nb);
+}
+
+void		push_maxs_mins(t_env *e, int *mins, int *maxs)
+{
+	int		nb;
+
 	while (e->a)
 	{
+		nb = best_nb(stk_len(e->a));
 		mins = get_mins(e->a, nb);
 		maxs = get_maxs(e->a, nb);
 		while (!in_tab(maxs, e->a->nbr, nb) && !in_tab(mins, e->a->nbr, nb))
@@ -56,7 +77,7 @@ void		re_push(t_env *e)
 	int		i;
 
 	i = 0;
-	while (e->b)
+	while (stk_len(e->b) > 1)
 	{
 		maxs = get_maxs(e->b, 2);
 		re_smartpush(e, maxs, i);
@@ -67,33 +88,19 @@ void		re_push(t_env *e)
 				command_buff(e, "stk_swap", 'a');
 		ft_memdel((void **)&maxs);
 	}
-}
-
-int			best_nb(int len)
-{
-	int	nb;
-
-	if (len < 50)
-		nb = len / 10;
-	else if (len < 150)
-		nb = 5 + len / 100;
-	else if (len < 300)
-		nb = 7 + len / 100;
-	else
-		nb = 10 + len / 100;
-	return (nb);
+	command_buff(e, "stk_push", 'a');
+	if (stk_len(e->a) > 1)
+		if (e->a->nbr > e->a->next->nbr)
+			command_buff(e, "stk_swap", 'a');
 }
 
 void		sort_min(t_env *e)
 {
 	int		*mins;
 	int		*maxs;
-	int		nb;
 
 	mins = NULL;
 	maxs = NULL;
-	nb = best_nb(stk_len(e->a));
-	nb = (nb == 0) ? 1 : nb;
-	push_maxs_mins(e, mins, maxs, nb);
+	push_maxs_mins(e, mins, maxs);
 	re_push(e);
 }

@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/21 14:47:21 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/27 13:39:22 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/04 17:51:55 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,23 @@ size_t	ft_len_nbr(long n)
 	return (len);
 }
 
-int		sign(char *str)
+int		is_nbr(char *str)
 {
-	if (str[0] == '+')
+	int		i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		i++;
+	if (str[i] == '\0')
 		return (1);
-	return (0);
+	else
+		return (0);
 }
 
 void	init_stack(t_env *e, char **argv, int begin, int last)
@@ -48,9 +60,9 @@ void	init_stack(t_env *e, char **argv, int begin, int last)
 	*stk = NULL;
 	while (begin <= --last)
 	{
-		nbr = ft_atoi(argv[last]);
-		if (ft_strlen(argv[last]) != ft_len_nbr(nbr) + sign(argv[last]))
+		if (!is_nbr(argv[last]))
 			error(e);
+		nbr = ft_atoi(argv[last]);
 		stk_doublon(e, *stk, nbr);
 		if (nbr != 0)
 			stk_add_begin(stk, nbr);

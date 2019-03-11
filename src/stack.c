@@ -6,11 +6,23 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 11:50:51 by mdchane           #+#    #+#             */
-/*   Updated: 2019/02/21 14:51:56 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/11 08:29:22 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libpush.h"
+
+int		is_zero(char *str)
+{
+	size_t	i;
+
+	i = 0;
+	while (str[i] == '0')
+		i++;
+	if (i == ft_strlen(str))
+		return (1);
+	return (0);
+}
 
 int		in_tab(int *tab, int nb, int len)
 {
