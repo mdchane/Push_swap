@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/10 08:36:51 by mdchane           #+#    #+#              #
-#    Updated: 2019/02/21 12:51:41 by mdchane          ###   ########.fr        #
+#    Updated: 2019/03/13 08:33:07 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,8 +118,10 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME): $(OBJ_PATH) $(OBJS)
+$(NAME): $(OBJ_PATH) $(OBJS) $(HEADER)
+	@$(info $(NAME) : Sources compiling...)
 	@ar rcs $(NAME) $(OBJS)
+	@$(info $(NAME) made)
 
 $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)

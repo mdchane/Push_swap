@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/02 10:36:19 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/08 11:35:31 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/13 08:05:13 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	ft_opt_others1(t_final *fl, char *str, int *nb_print, uintmax_t nbr)
 	if (fl->options[DIESE] && fl->preci <= 0)
 	{
 		if (nbr == 0)
-			*nb_print += put_n_char(' ', fl->larg_min -
-				ft_strlen(str) - 1 - fl->preci);
+			*nb_print += put_n_char(' ', fl->larg_min
+				- ft_strlen(str) - 1 - fl->preci);
 		else
 			*nb_print += put_n_char(' ', fl->larg_min - ft_strlen(str) - 2);
 		if (nbr == 0 && fl->preci <= 0)

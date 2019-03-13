@@ -6,7 +6,7 @@
 /*   By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/26 13:52:49 by mdchane           #+#    #+#             */
-/*   Updated: 2019/01/08 11:43:47 by mdchane          ###   ########.fr       */
+/*   Updated: 2019/03/13 08:04:57 by mdchane          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void		ft_opt_zero_u(t_final *final, char *str, int *nb_print)
 {
 	if (final->preci >= 0)
 	{
-		*nb_print += put_n_char(' ', final->larg_min -
-			ft_strlen(str) - *nb_print);
+		*nb_print += put_n_char(' ', final->larg_min
+			- ft_strlen(str) - *nb_print);
 	}
 	else
 	{
-		*nb_print += put_n_char('0', final->larg_min -
-			ft_strlen(str) - *nb_print);
+		*nb_print += put_n_char('0', final->larg_min
+			- ft_strlen(str) - *nb_print);
 	}
 	*nb_print += ft_putstr(str);
 }

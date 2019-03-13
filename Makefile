@@ -6,7 +6,7 @@
 #    By: mdchane <mdchane@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/01 09:49:18 by mdchane           #+#    #+#              #
-#    Updated: 2019/03/11 16:14:09 by mdchane          ###   ########.fr        #
+#    Updated: 2019/03/13 08:31:41 by mdchane          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,15 @@ NAME = checker
 
 NAME2 = push_swap
 
+HEADER_NAME = libpush.h
+
 CC = gcc
 
 FLAGS = -Wall -Werror -Wextra
+
+HEADER_PATH = includes
+
+HEADER = $(addprefix $(HEADER_PATH)/,$(HEADER_NAME))
 
 SRC_PATH = src
 
@@ -44,26 +50,23 @@ OBJ2 = $(addprefix $(OBJ_PATH2)/,$(OBJ_NAME2))
 
 all: $(NAME) $(NAME2)
 
-$(NAME): $(OBJ_PATH) $(OBJ)
+$(NAME): $(OBJ_PATH) $(OBJ) $(HEADER)
 	@make -j -C libft/
 	@$(info $(NAME) : Sources compiling...)
 	@$(CC) $(FLAGS) $(OBJ) -o $@ -Llibft -lft
 	@$(info Executable $(NAME) made)
 
-$(NAME2): $(OBJ_PATH2) $(OBJ2)
+$(NAME2): $(OBJ_PATH2) $(OBJ2) $(HEADER)
 	@make -j -C libft/
 	@$(info $(NAME2) : Sources compiling...)
 	@$(CC) $(FLAGS) $(OBJ2) -o $@ -Llibft -lft
 	@$(info Executable $(NAME2) made)
 
-lib:
-	@make -j -C libft/
-
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(HEADER_PATH) -I libft/includes -o $@ -c $<
 
 $(OBJ_PATH2)/%.o: $(SRC_PATH)/%.c
-	@$(CC) $(FLAGS) -I. -I libft/includes -o $@ -c $<
+	@$(CC) $(FLAGS) -I $(HEADER_PATH) -I libft/includes -o $@ -c $<
 
 $(OBJ_PATH):
 	@mkdir -p $@
